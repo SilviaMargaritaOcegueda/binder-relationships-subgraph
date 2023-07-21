@@ -1,0 +1,271 @@
+[
+  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
+  { "inputs": [], "name": "InitializationFailed", "type": "error" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "relationship",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "parent1",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "parent2",
+        "type": "address"
+      }
+    ],
+    "name": "RelationshipCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": false,
+        "internalType": "bool",
+        "name": "result",
+        "type": "bool"
+      }
+    ],
+    "name": "SignatureChecked",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "ADDRESSES_PROVIDER_V2",
+    "outputs": [
+      {
+        "internalType": "contract IAddressesProvider",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "APP_ID",
+    "outputs": [{ "internalType": "bytes16", "name": "", "type": "bytes16" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "IS_IMPERSONATION_MODE",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "SISMO_CONNECT_LIB_VERSION",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes32", "name": "_messageHash", "type": "bytes32" }
+    ],
+    "name": "_getEthSignedMessageHash",
+    "outputs": [{ "internalType": "bytes32", "name": "", "type": "bytes32" }],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes32",
+        "name": "_ethSignedMessageHash",
+        "type": "bytes32"
+      },
+      { "internalType": "bytes", "name": "_signature", "type": "bytes" }
+    ],
+    "name": "_recoverSigner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "bytes", "name": "sig", "type": "bytes" }],
+    "name": "_splitSignature",
+    "outputs": [
+      { "internalType": "bytes32", "name": "r", "type": "bytes32" },
+      { "internalType": "bytes32", "name": "s", "type": "bytes32" },
+      { "internalType": "uint8", "name": "v", "type": "uint8" }
+    ],
+    "stateMutability": "pure",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes", "name": "signature", "type": "bytes" },
+      { "internalType": "bytes32", "name": "dataHash", "type": "bytes32" },
+      { "internalType": "address", "name": "parent", "type": "address" }
+    ],
+    "name": "checkSignature",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes[2]", "name": "signatures", "type": "bytes[2]" },
+      { "internalType": "bytes32", "name": "dataHash", "type": "bytes32" },
+      { "internalType": "address[2]", "name": "parents", "type": "address[2]" }
+    ],
+    "name": "checkSignatures",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "config",
+    "outputs": [
+      {
+        "components": [
+          { "internalType": "bytes16", "name": "appId", "type": "bytes16" },
+          {
+            "components": [
+              {
+                "internalType": "bool",
+                "name": "isImpersonationMode",
+                "type": "bool"
+              }
+            ],
+            "internalType": "struct VaultConfig",
+            "name": "vault",
+            "type": "tuple"
+          }
+        ],
+        "internalType": "struct SismoConnectConfig",
+        "name": "",
+        "type": "tuple"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "components": [
+          {
+            "internalType": "address",
+            "name": "implementation",
+            "type": "address"
+          },
+          {
+            "internalType": "address[2]",
+            "name": "parents",
+            "type": "address[2]"
+          },
+          {
+            "internalType": "bytes[2]",
+            "name": "signatures",
+            "type": "bytes[2]"
+          },
+          {
+            "internalType": "bytes[2]",
+            "name": "zkProofs",
+            "type": "bytes[2]"
+          },
+          {
+            "internalType": "bytes16[2]",
+            "name": "groupIds",
+            "type": "bytes16[2]"
+          },
+          { "internalType": "bytes32", "name": "dataHash", "type": "bytes32" },
+          { "internalType": "uint256", "name": "salt", "type": "uint256" },
+          { "internalType": "bytes", "name": "initData", "type": "bytes" }
+        ],
+        "internalType": "struct RelationshipRegistry.CreateRelationshipParams",
+        "name": "params",
+        "type": "tuple"
+      }
+    ],
+    "name": "createRelationship",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "implementation",
+        "type": "address"
+      },
+      { "internalType": "address", "name": "parent1", "type": "address" },
+      { "internalType": "address", "name": "parent2", "type": "address" },
+      { "internalType": "uint256", "name": "salt", "type": "uint256" },
+      { "internalType": "bytes", "name": "initData", "type": "bytes" }
+    ],
+    "name": "createRelationship",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "relationship", "type": "address" }
+    ],
+    "name": "isRelationship",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "account", "type": "address" }
+    ],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "name": "registry",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes", "name": "zkProof", "type": "bytes" },
+      { "internalType": "bytes16", "name": "groupId", "type": "bytes16" },
+      { "internalType": "address", "name": "parent", "type": "address" }
+    ],
+    "name": "validatezkProof",
+    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "bytes[2]", "name": "zkProofs", "type": "bytes[2]" },
+      {
+        "internalType": "bytes16[2]",
+        "name": "groupIds",
+        "type": "bytes16[2]"
+      },
+      { "internalType": "address[2]", "name": "parents", "type": "address[2]" }
+    ],
+    "name": "validatezkProofs",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
